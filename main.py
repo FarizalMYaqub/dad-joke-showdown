@@ -14,10 +14,13 @@ characters, on a single line) and writes it to /output/entry.txt,
 where the house judge reads it.
 """
 
+import os
 from pathlib import Path
 
 MAX_CHARS = 200
-OUT_PATH = Path("/output/entry.txt")
+# The grader sets MAKEFUN_OUTPUT_DIR; fall back to /output so the
+# program also runs unchanged on a plain machine.
+OUT_PATH = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")) / "entry.txt"
 
 JOKE = "My son asked for dinner I couldn't possibly burn, so I made reservations."
 
